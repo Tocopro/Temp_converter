@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+<form onsubmit="return false">
+    <div class="Heading">
+        Temperature Converter Celsius and Fahrenheit
+    </div>
+    <div class="Temperature Input">
+        <p class="sub-heading">
+            Select the Conversion
+        </p>
+        <label>
+            <input class="Selection-Celsius" type="radio" id="select-conversion1"
+                   value="select-conversion1" name="select">
+            CELSIUS<br>
+            <input class="Selection-Fahrenheit" type="radio" id="select-conversion2"
+                   value="select-conversion1" name="select">
+            FAHRENHEIT<br>
+            <br>
+        </label>
+            <div class="Celsius-Check" id="checking"></div>
+        <br>
+        <label>
+            <input class="User Input" type="text" id="temps"><br><br>
+        </label>
+    </div>
+    <div class="Celsius Button">
+        <button class="C-Button" type="submit" onclick="Celsius_Convert">CELSIUS</button>
+        <button class="F-Button" type="submit" onclick="Fahrenheit_Convert">FAHRENHEIT</button>
+        <button class="Clear" type="reset" id="clearing" onclick="Clear()">CLEAR</button>
+    </div>
+    <div class="Display_Conversion">
+        <p class="Display-Message">
+            Temperature Conversion:
+        </p>
+        <div class="Answer-Display" id="answer"></div>
+    </div>
+    <br>
+
+</form>
+</body>
+<script>
+    function Celsius_Convert()
+    {
+        let temp_f = parseInt(document.getElementById("temps").value);
+        let f_convert = ((temp_f - 32) * 5) / 9;
+        let check = document.getElementById("select-conversion2");
+        if(check === true)
+        {
+            document.getElementById("answer").innerHTML = f_convert.toString();
+        }
+        else
+        {
+            document.getElementById("checking").innerHTML = "Selected Wrong Converter";
+        }
+
+    }
+    function Fahrenheit_Convert()
+    {
+        let temp_c = parseInt(document.getElementById("temps").value);
+        let c_convert = ((temp_c * 9/5) + 32);
+        let check = document.getElementById("select-conversion1");
+        if (check === true)
+        {
+            document.getElementById("answer").innerHTML = c_convert.toString();
+
+        }
+        else
+        {
+            document.getElementById("checking").innerHTML = "Selected Wrong Converter";
+        }
+    }
+    function Clear()
+    {
+        document.getElementById("clearing").value;
+    }
+</script>
+</html>
